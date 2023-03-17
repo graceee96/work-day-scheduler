@@ -1,6 +1,8 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
+// Wrap all code that interacts with the DOM in a call to jQuery to ensure that the code isn't run until the browser has finished rendering all the elements in the html.
+
+//html elements
+
+//variables
 var timeNow = dayjs();
 
 $(function () {
@@ -18,7 +20,9 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
-      // use setInterval() --> use timeNow to get the current hour (set class to present) class changes after every hour;
+      // make an array of element and hours {div element, hour} --> set value of each element of to the hour
+      // use setInterval() --> declare new variable currentHour and check if currentHour is equal to/greater than/less than the value of each element;
+      // use if else to change classes of elements
 
 
   // TODO: Add code to get any user input that was saved in localStorage and set
