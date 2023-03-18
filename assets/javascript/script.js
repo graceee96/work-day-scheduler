@@ -64,7 +64,7 @@ $(function () {
       };
 
       if (divElements[i].hour > currentHour) { //future
-        divElements[i].htmlEl.removeClass('past present');
+        divElements[i].htmlEl.removeClass('past');
         divElements[i].htmlEl.addClass('future');
 
         console.log ('FUTURE')
