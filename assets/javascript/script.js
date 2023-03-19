@@ -37,31 +37,14 @@ var dailySchedule = [];
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should use the id in the containing time-block as a key to save the user input in local storage.
   //HINT: What does `this` reference in the click listener function? How can DOM traversal be used to get the "hour-x" id of the time-block containing the button that was clicked? How might the id be useful when saving the description in local storage?
-  saveButton.on('click', function(event) {
-    event.preventDefault();
+  saveButton.on('click', saveScheduleItems);
 
-    console.log(this);
-
+  function saveScheduleItems() {
     var time = $(this).parent().attr('id');
     var task = $(this).siblings('.description').val();
 
     localStorage.setItem(time, task);
-
-    // console.log(time);
-    // console.log(task);
-
-    // var scheduledEvent = {
-    //   hour: time,
-    //   toDo: task 
-    // };
-
-    // dailySchedule.push(scheduledEvent);
-    // console.log(dailySchedule);
-
-    // localStorage.setItem('schedule', JSON.stringify(dailySchedule));
-  })
-
-
+  }
 
   // TODO: Add code to apply the past, present, or future class to each time block by comparing the id to the current hour. HINTS: How can the id attribute of each time-block be used to conditionally add or remove the past, present, and future classes? How can Day.js be used to get the current hour in 24-hour time?
       // make an array of element and hours {div element, hour} --> set value of each element of to the hour
@@ -72,48 +55,34 @@ $(function () {
       if (divElements[i].hour == currentHour) { //present
         divElements[i].htmlEl.removeClass('future');
         divElements[i].htmlEl.addClass('present');
-
-        // console.log('WE ARE IN THE NOW');
       };
 
       if (divElements[i].hour < currentHour) { //past
         divElements[i].htmlEl.removeClass('present');
         divElements[i].htmlEl.addClass('past');
-
-        // console.log('the time has passed');
       };
 
       if (divElements[i].hour > currentHour) { //future
         divElements[i].htmlEl.removeClass('past');
         divElements[i].htmlEl.addClass('future');
-
-        // console.log ('FUTURE');
       }
     }
   }, 1000)
 
   // TODO: Add code to get any user input that was saved in localStorage and set the values of the corresponding textarea elements. HINT: How can the id attribute of each time-block be used to do this?
   
-  function readScheduleItemsInStorage() {
-    var schedule = localStorage.getItem(JSON.parse('schedule'));
-
-    if (schedule) {
-      schedule = JSON.parse(schedule)
-    } else {
-      schedule = []
-    };
-
-    return schedule;
-  }
-
   function printScheduleItems() {
-    var schedule = readScheduleItemsInStorage();
-
-    //loop through the .container and find the div that 
-    
-    for (var i = 0; i < schedule.length; i++) {
-      // loop through schedule and set .val('schedule[i].toDo')
-    }
+    //if text area is empty set .val('')
+    //if text area is filled set .val('<corresponding value in local storage>')
+    hourNineDiv.children('.description').val(localStorage.getItem('hour-9'));
+    hourTenDiv.children('.description').val(localStorage.getItem('hour-10'));
+    hourElevenDiv.children('.description').val(localStorage.getItem('hour-11'));
+    hourTwelveDiv.children('.description').val(localStorage.getItem('hour-12'));
+    hourThirteenDiv.children('.description').val(localStorage.getItem('hour-13'));
+    hourFourteenDiv.children('.description').val(localStorage.getItem('hour-14'));
+    hourFifteenDiv.children('.description').val(localStorage.getItem('hour-15'));
+    hourSixteenDiv.children('.description').val(localStorage.getItem('hour-16'));
+    hourSeventeenDiv.children('.description').val(localStorage.getItem('hour-17'));
   }
 
   printScheduleItems();
