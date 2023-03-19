@@ -11,7 +11,7 @@ To use this application, input tasks that must be completed in the appropriate t
 
 In addition, clicking on the blue save button allows users to store the tasks. These tasks will stay on the page even if the webpage closes or refreshes.
 
-[scheduler in use]
+![scheduler in use](assets/images/website-in-action.gif)
 
 Website URL: https://graceee96.github.io/work-day-scheduler
 
